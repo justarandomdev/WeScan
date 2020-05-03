@@ -175,8 +175,12 @@ final class EditScanViewController: UIViewController {
         
         let results = ImageScannerResults(detectedRectangle: scaledQuad, originalScan: ImageScannerScan(image: image), croppedScan: ImageScannerScan(image: croppedImage), enhancedScan: enhancedScan)
         
-        let reviewViewController = ReviewViewController(results: results)
-        navigationController?.pushViewController(reviewViewController, animated: true)
+        if let imageScannerController = navigationController as? ImageScannerController, !imageScannerController.shouldShowReview {
+            imageScannerController.imageScannerDelegate?.imageScannerController(imageScannerController, didFinishScanningWithResults: results)
+        } else {
+            let reviewViewController = ReviewViewController(results: results)
+            navigationController?.pushViewController(reviewViewController, animated: true)
+        }
     }
     
     private func displayQuad() {

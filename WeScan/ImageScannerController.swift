@@ -46,6 +46,7 @@ public final class ImageScannerController: UINavigationController {
     public weak var imageScannerDelegate: ImageScannerControllerDelegate?
     
     public var configureNavigationBarAppearance: ((UINavigationBar) -> Void)?
+    public var shouldShowReview: Bool = true
 
     // MARK: - Life Cycle
     
