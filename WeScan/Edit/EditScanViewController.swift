@@ -106,7 +106,7 @@ final class EditScanViewController: UIViewController {
     
     private func setupNavBarAppearance() {
         if let imageScannerController = navigationController as? ImageScannerController, let navBar = navigationController?.navigationBar {
-            imageScannerController.configureNavigationbar?(navBar)
+            imageScannerController.configureNavigationBarAppearance?(navBar)
         }
     }
     
