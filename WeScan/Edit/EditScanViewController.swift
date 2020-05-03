@@ -70,6 +70,7 @@ final class EditScanViewController: UIViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavBarAppearance()
         setupViews()
         setupConstraints()
         title = NSLocalizedString("wescan.edit.title", tableName: nil, bundle: Bundle(for: EditScanViewController.self), value: "Edit Scan", comment: "The title of the EditScanViewController")
@@ -102,6 +103,12 @@ final class EditScanViewController: UIViewController {
     }
     
     // MARK: - Setups
+    
+    private func setupNavBarAppearance() {
+        if let imageScannerController = navigationController as? ImageScannerController, let navBar = navigationController?.navigationBar {
+            imageScannerController.configureNavigationbar?(navBar)
+        }
+    }
     
     private func setupViews() {
         view.addSubview(imageView)
